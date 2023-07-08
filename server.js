@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+require("./database/db")
 
 // require("dotenv").config();
 // const db = require("./database/db");
@@ -14,5 +15,5 @@ app.use(bodyParser.urlencoded({
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, (req, res) => {
-	console.log("Server running on" + PORT);
+	console.log("Server running on " + PORT);
 })
