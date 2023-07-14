@@ -1,4 +1,5 @@
-let connection = require("../database/db").connection
+let utils = require("../utils/dbQuery")
+let connection = require("../database/db")
 let giveRandomMeme = () => {
     try {
         let resp = "";  // database query to get random meme
@@ -9,24 +10,12 @@ let giveRandomMeme = () => {
     }
 }
 
-let uploadMeme = () => {
+let uploadMeme = (body) => {
      try {
-        let resp = "";  // database query to get random meme
-        connection.connect(function(err) {
-        if (err) {
-            throw err
-        }
-        connection.query('SELECT DATABASE();', function(err, rows) {
-            if (err) {
-            throw err
-            }
-            console.log("Successfully connected")
-            console.log(rows[0]['DATABASE()']);
-            connection.end()
-        })})
-        return {success: true, message: "Connected successfully"}
+        let resp = utils.insertQuery(body.meme)
+        return {success: true, message: resp}
     } catch (err) {
-        
+        console.log("Error in uploadMeme", err);
     }
 }
 

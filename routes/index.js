@@ -1,9 +1,9 @@
 const route = require('express').Router();
-const service = require("../services/randomGen")
+const service = require("../services/memeService")
 
 route.get('/', (req, res) => {
     try {
-        res.render("index");
+        res.render("index")
     } catch (err) {
         res.send("Problem in starting the server");
     }

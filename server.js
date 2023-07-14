@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+app.use(express.static(__dirname + "/public"));
 const userRoutes = require("./routes/index").route;
 app.use("/", userRoutes);
 
