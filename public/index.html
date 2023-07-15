@@ -1,37 +1,49 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDN - Meme Delivery Network</title>
-    <link rel="stylesheet" href="output.css">
-  </head>
-  <body>
-    <main class="container">
-      <div class="header">
-        <h1 class="text-3xl font-bold underline">MDN - Meme Delivery Network</h1>
-      </div>
-      <div class="content">
-        <h2>What is MDN?</h2>
-        <p>MDN is a meme delivery network. It is a network of servers that deliver memes to users based on their location.</p>
-        <h2>How does MDN work?</h2>
-        <p></p>
-      </div>
-      <!-- Two buttons, one to serve random memes and second to upload memes -->
 
-      <div class="buttons">
-        <form action="/random" method="GET">
-          <button type="submit">Get Random Meme</button>
-        </form>
-        
-        <form action="/postMeme" method="POST" enctype="multipart/form-data">
-          <input type="file" name="image" accept="image/*"/>
-          <button type="submit">Upload Meme</button>      
-        </form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDN - Meme Delivery Network</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="bg-gray-200">
+  <main class="container mx-auto py-8">
+    <div class="header">
+      <h1 class="text-4xl font-bold text-center mb-6">MDN - Meme Delivery Network</h1>
+    </div>
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-xl mb-8">
+      <div class="content">
+        <h2 class="text-xl font-bold mb-2">What is MDN?</h2>
+        <p>MDN is a meme delivery network. It is a network of servers that deliver memes to users based on their
+          location.
+        </p>
+        <h2 class="text-xl font-bold mb-2">How does MDN work?</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni rerum voluptatum architecto assumenda
+          necessitatibus cumque fugit dolore a veritatis voluptas est, temporibus expedita excepturi doloribus
+          exercitationem fuga amet, quas quam.</p>
       </div>
-      <div class="footer">
-        <p>MDN - Meme Delivery Network</p>
-      </div>
-    </main>
-    <script src="js/index.js"></script>
-  </body>
+      <button onclick="loadRandomImage()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Load a random meme
+      </button>
+    </div>
+    <!-- Two buttons, one to serve random memes and second to upload memes -->
+
+    <div class="buttons">
+      <form action="/random" method="GET">
+        <button type="submit">Get Random Meme</button>
+      </form>
+
+      <form action="/postMeme" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" />
+        <button type="submit">Upload Meme</button>
+      </form>
+    </div>
+    <div class="footer">
+      <p>MDN - Meme Delivery Network</p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>
