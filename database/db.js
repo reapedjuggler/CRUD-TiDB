@@ -1,20 +1,6 @@
 const mysql = require("serverless-mysql");
 require('dotenv').config();
 
-// var connection = mysql.createConnection({
-//   host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
-//   port: 4000,
-//   user: '4ZnSNRFS3CWV9Qb.root',
-//   password : process.env.PASSWORD,
-//   database: 'test',
-//   ssl: {
-//     minVersion: 'TLSv1.2',
-//     rejectUnauthorized: true
-//   }
-// });
-// module.exports = exports = {
-//   connection
-// }
 const db = mysql({
   config: {
     host: process.env.MYSQL_HOST,
