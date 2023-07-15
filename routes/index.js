@@ -15,10 +15,10 @@ route.get("/random", (req, res) => {
         if (meme.success == false) {
             throw new Error(meme.message);
         } 
-        res.send("Sad")
+        res.send(meme.message)
     } catch (err) {
         console.log(err, "Error in routes");
-        res.send("No meme sorry")
+        res.end("No meme sorry")
     }
 });
 
@@ -28,6 +28,9 @@ route.post("/postMeme", (req, res) => {
         if (resp.success == false) {
             throw new Error("Error uploading the meme");            
         }
+        req.on("data", (data) => {
+            console.log(data);
+          })
         res.send("Meme uploaded successfully")
     } catch (err) {
         console.log(err, "Error in postMeme route");
