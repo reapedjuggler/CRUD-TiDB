@@ -1,5 +1,6 @@
 const mysql = require("mysql2");
-const dotenv = require('dotenv');
+require('dotenv').config();
+
 var connection = mysql.createConnection({
   host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
   port: 4000,
@@ -14,6 +15,22 @@ var connection = mysql.createConnection({
 module.exports = exports = {
   connection
 }
+// module.exports = {
+//   // HOST: "",
+//   HOST: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
+//   port: 4000,
+//   USER: '4ZnSNRFS3CWV9Qb.root',
+//   PASSWORD: process.env.PASSWORD,
+//   DB: 'test',
+//   dialect: "tidb",
+//   // dialectModule: TiDBDialect,
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000
+//   }
+// };
 
 // connection.connect(function(err) {
 //   if (err) {

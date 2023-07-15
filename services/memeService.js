@@ -18,18 +18,12 @@ let giveRandomMeme = () => {
 
 let uploadMeme = (body) => {
     try {
-        const title = body.title;
-        const file = body.file;
-
-        console.log(title);
-        console.log(file);
-
-        res.sendStatus(200);
+        let resp;
         // let resp = utils.insertQuery(body.meme)
-        // return {
-        //     success: true,
-        //     message: resp
-        // }
+        return {
+            success: true,
+            message: resp
+        }
     } catch (err) {
         console.log("Error in uploadMeme", err);
     }
