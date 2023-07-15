@@ -5,7 +5,7 @@ const os = require("os")
 const uploadController = require("../controllers/upload");
 
 const upload = multer({
-    
+    storage: multer.memoryStorage()
 });
 
 route.get('/', (req, res) => {

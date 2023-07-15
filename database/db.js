@@ -1,60 +1,48 @@
-const mysql = require("mysql2");
+const mysql = require("serverless-mysql");
 require('dotenv').config();
 
-var connection = mysql.createConnection({
-  host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
-  port: 4000,
-  user: '4ZnSNRFS3CWV9Qb.root',
-  password : process.env.PASSWORD,
-  database: 'test',
-  ssl: {
-    minVersion: 'TLSv1.2',
-    rejectUnauthorized: true
+// var connection = mysql.createConnection({
+//   host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
+//   port: 4000,
+//   user: '4ZnSNRFS3CWV9Qb.root',
+//   password : process.env.PASSWORD,
+//   database: 'test',
+//   ssl: {
+//     minVersion: 'TLSv1.2',
+//     rejectUnauthorized: true
+//   }
+// });
+// module.exports = exports = {
+//   connection
+// }
+const db = mysql({
+  config: {
+    host: process.env.MYSQL_HOST,
+    port: process.env.MYSQL_PORT,
+    database: process.env.MYSQL_DATABASE,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    ssl: {
+      minVersion: 'TLSv1.2',
+      rejectUnauthorized: true
+    }
   }
 });
-module.exports = exports = {
-  connection
+
+async function executeQuery(query, values = []) {
+  try {
+    console.log(query, " here in executeQuery")
+    const results = await db.query(query, values);
+    console.log(results,  " Successful")
+    await db.end();
+    return results;
+  } catch (error) {
+    console.log(error, " error executing query")
+    return error;
+  }
 }
-// module.exports = {
-//   // HOST: "",
-//   HOST: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
-//   port: 4000,
-//   USER: '4ZnSNRFS3CWV9Qb.root',
-//   PASSWORD: process.env.PASSWORD,
-//   DB: 'test',
-//   dialect: "tidb",
-//   // dialectModule: TiDBDialect,
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     acquire: 30000,
-//     idle: 10000
-//   }
-// };
 
-// connection.connect(function(err) {
-//   if (err) {
-//     throw err
-//   }
-//   connection.query('SELECT DATABASE();', function(err, rows) {
-//     if (err) {
-//       throw err
-//     }
-//     console.log("Successfully connected")
-//     console.log(rows[0]['DATABASE()']);
-//     connection.end()
-//   });
-//   // connection.query("CREATE DATABASE aaryan", (err, resp) => {
-//     if (err) {
-//       console.log(`Inside err + ${err}`)
-//       throw err
-//     }
-//     console.log("resp -> ", resp)
-//   // })
-//   connection.query("SHOW DATABASES;", (err, resp) => {
-
-//   })
-//   connection.query("INSERT INTO person VALUES(1,'sad','hehe');")
-
-//   // console.log("->", connection.query("SELECT * FROM person"))
-// });
+module.exports = exports = {
+  db,
+  executeQuery
+}
