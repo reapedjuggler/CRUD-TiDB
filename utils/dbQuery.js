@@ -13,7 +13,7 @@ let insertQuery = (file) => {
             // createTable();
             connection.query("CREATE TABLE files (id INT, fileName VARCHAR);")
             connection.query("INSERT INTO (id,  (id, filename)filename)files VALUES(1,'sad');")
-            console.log("->", connection.query("SELECT * FROM files"))
+            console.log("->", connection.query("SELECT * FROM files;"))
             // connection.end()
         })})
     } catch (err) {

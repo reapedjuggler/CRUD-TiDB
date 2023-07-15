@@ -1,17 +1,16 @@
 const mysql = require("mysql2");
-
+const dotenv = require('dotenv');
 var connection = mysql.createConnection({
   host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
   port: 4000,
   user: '4ZnSNRFS3CWV9Qb.root',
-  password: 'lQMvUOBlPPOUK7XO',
+  password : process.env.PASSWORD,
   database: 'test',
   ssl: {
     minVersion: 'TLSv1.2',
     rejectUnauthorized: true
   }
 });
-
 module.exports = exports = {
   connection
 }
