@@ -35,7 +35,7 @@ route.get("/random", (req, res) => {
 //     } 
 // })
 
-router.post('/postMeme', upload.single('file'), function(req, res) {
+route.post('/postMeme', upload.single('file'), function(req, res) {
     try {
         let resp = service.uploadMeme(req.body);
         if (resp.success == false) {
