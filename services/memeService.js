@@ -19,7 +19,6 @@ let giveRandomMeme = () => {
 let uploadMeme = (image, imageName) => {
     try {
         let resp;
-        // image = "image", imageName = "imageName"
         console.log(image, " . ", imageName)
         const createTableQuery = `
             CREATE TABLE images (
