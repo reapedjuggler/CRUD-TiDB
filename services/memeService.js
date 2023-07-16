@@ -2,46 +2,65 @@ let utils = require("../utils/dbQuery")
 let connection = require("../database/db")
 let giveRandomMeme = () => {
     try {
-        let resp = "";  // database query to get random meme
-        return {success: true, message: resp}
+        let resp = ""; // database query to get random meme
+        return {
+            success: true,
+            message: resp
+        }
     } catch (err) {
         console.log("Error in giveRandomMeme service", err)
-        return {success: false, message: err.message}
+        return {
+            success: false,
+            message: err.message
+        }
     }
 }
 
-let uploadMeme = (body) => {
-     try {
-        let resp = utils.insertQuery(body.meme)
-        return {success: true, message: resp}
+let uploadMeme = (image, imageName) => {
+    try {
+        let resp;
+        console.log(image, " . ", imageName)
+        const createTableQuery = `
+            CREATE TABLE images (
+            IMAGEDATA TEXT,
+            IMAGENAME VARCHAR(255)
+            )
+        `;
+        const selectTableQuery = `
+            SELECT * FROM images
+        `
+        const insertTableQuery = `INSERT INTO images VALUES('${image}', '${imageName}')`;
+        const showTables = `
+            show tables;
+        `
+        const dropTableQuery = "DROP TABLE images"
+        // connection.executeQuery(createTableQuery)
+        // connection.executeQuery(dropTableQuery)
+        // connection.executeQuery(showTables)
+        // connection.executeQuery(insertTableQuery) 
+        let IMAGE = "IMAGEDATA"
+        connection.executeQuery(selectTableQuery).then((val) => {
+            console.log(val[0][IMAGE], " . ", typeof (val[0]));
+            return {
+                success: true,
+                message: val
+            }
+        }).catch((err) => {
+            console.log(err);
+            return {
+                success: false,
+                error: err.message
+            }
+        })
+
+        return {
+            success: true,
+            message: resp
+        }
     } catch (err) {
         console.log("Error in uploadMeme", err);
     }
 }
-
-//   });
-//   // connection.query("CREATE DATABASE aaryan", (err, resp) => {
-//     if (err) {
-//       console.log(`Inside err + ${err}`)
-//       throw err
-//     }
-//     console.log("resp -> ", resp)
-//   // })
-//   connection.query("SHOW DATABASES;", (err, resp) => {
-
-//   })
-//   connection.query("INSERT INTO person VALUES(1,'sad','hehe');")
-
-  // console.log("->", connection.query("SELECT * FROM person"))
-// });
-
-
-//         return {success: true, message: resp}
-//     } catch (err) {
-//         console.log("Error in uploadMeme service", err)
-//         return {success: false, message: err.message}
-//     }
-// }
 
 module.exports = exports = {
     giveRandomMeme,

@@ -1,5 +1,12 @@
 const route = require('express').Router();
 const service = require("../services/memeService")
+const multer = require('multer');
+const os = require("os")
+const uploadController = require("../controllers/upload");
+
+const upload = multer({
+    storage: multer.memoryStorage()
+});
 
 route.get('/', (req, res) => {
     try {
@@ -14,7 +21,7 @@ route.get("/random", (req, res) => {
         let meme = service.giveRandomMeme();
         if (meme.success == false) {
             throw new Error(meme.message);
-        } 
+        }
         res.send(meme.message)
     } catch (err) {
         console.log(err, "Error in routes");
@@ -22,22 +29,8 @@ route.get("/random", (req, res) => {
     }
 });
 
-route.post("/postMeme", (req, res) => {
-    try {
-        let resp = service.uploadMeme(req.body);
-        if (resp.success == false) {
-            throw new Error("Error uploading the meme");            
-        }
-        req.on("data", (data) => {
-            console.log(data);
-          })
-        res.send("Meme uploaded successfully")
-    } catch (err) {
-        console.log(err, "Error in postMeme route");
-        res.send("No upload for you")
-    } 
-})
+route.post("/postMeme", upload.single('image'), uploadController.uploadFiles)
 
 exports = module.exports = {
     route,
-}; 
+};
