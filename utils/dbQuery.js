@@ -7,22 +7,32 @@ let insertQuery = (file) => {
     }
 }
 
-let getRandomMeme = () => {
-    try {
+const createTableQuery = `
+            CREATE TABLE images (
+            IMAGEDATA TEXT,
+            IMAGENAME VARCHAR(255)
+            )
+        `;
+const selectTableQuery = `
+            SELECT * FROM images
+        `
+//const insertTableQuery = `INSERT INTO images VALUES('${image}', '${imageName}')`;
 
-    } catch (err) {
-
-    }
+function insertTable(image,imageName){
+    const insertTableQuery = `INSERT INTO images VALUES('image','imageName)`;
+    console.log(insertTableQuery);
 }
 
-let createTable = () => {
-    try {
-        connection.query("CREATE TABLEes (id INTEGER, fileName VARCHAR)")
-    } catch (err) {
-        console.log("Error in createTable");
-    }
-}
+const showTables = `
+            show tables;
+        `
+const dropTableQuery = "DROP TABLE images"
 
 module.exports = exports = {
-    insertQuery
+    insertQuery,
+    createTableQuery,
+    selectTableQuery,
+    insertTableQuery,
+    showTables,
+    dropTableQuery
 }
