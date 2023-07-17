@@ -1,5 +1,6 @@
 let utils = require("../utils/dbQuery")
 let connection = require("../database/db")
+const { createTableQuery,selectTableQuery,insertTableQuery,showTables,dropTableQuery} = require("../utils/dbQuery")
 let giveRandomMeme = () => {
     try {
         let resp = ""; // database query to get random meme
@@ -20,20 +21,6 @@ let uploadMeme = (image, imageName) => {
     try {
         let resp;
         console.log(image, " . ", imageName)
-        const createTableQuery = `
-            CREATE TABLE images (
-            IMAGEDATA TEXT,
-            IMAGENAME VARCHAR(255)
-            )
-        `;
-        const selectTableQuery = `
-            SELECT * FROM images
-        `
-        const insertTableQuery = `INSERT INTO images VALUES('${image}', '${imageName}')`;
-        const showTables = `
-            show tables;
-        `
-        const dropTableQuery = "DROP TABLE images"
         // connection.executeQuery(createTableQuery)
         // connection.executeQuery(dropTableQuery)
         // connection.executeQuery(showTables)

@@ -7,6 +7,21 @@ let insertQuery = (file) => {
     }
 }
 
+const createTableQuery = `
+            CREATE TABLE images (
+            IMAGEDATA TEXT,
+            IMAGENAME VARCHAR(255)
+            )
+        `;
+const selectTableQuery = `
+            SELECT * FROM images
+        `
+const insertTableQuery = `INSERT INTO images VALUES('${image}', '${imageName}')`;
+const showTables = `
+            show tables;
+        `
+const dropTableQuery = "DROP TABLE images"
+
 let getRandomMeme = () => {
     try {
 
@@ -24,5 +39,10 @@ let createTable = () => {
 }
 
 module.exports = exports = {
-    insertQuery
+    insertQuery,
+    createTableQuery,
+    selectTableQuery,
+    insertTableQuery,
+    showTables,
+    dropTableQuery
 }
