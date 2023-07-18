@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-image: url("https://assets.ubuntu.com/v1/e77b6339-raccoon-hangover.gif");
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+/* @keyframes raccoon-gif {
+  0% {
+    background-image: url("https://assets.ubuntu.com/v1/e77b6339-raccoon-hangover.gif");
+  }
+  25% {
+    background-image: url("https://cloud-j53t4w6z2-hack-club-bot.vercel.app/0raccoon-freedom.gif");
+  }
+  50% {
+    background-image: url("https://cloud-hbu3s93e6-hack-club-bot.vercel.app/0racoon-flower.gif");
+  }
+  75% {
+    background-image: url("https://cloud-8910xd51m-hack-club-bot.vercel.app/0raccoon-triplets.gif");
+  }
+  100% {
+    background-image: url("https://assets.ubuntu.com/v1/e77b6339-raccoon-hangover.gif");
+  }
+}
+
+body {
+  animation: raccoon-gif 20s infinite;
+} */

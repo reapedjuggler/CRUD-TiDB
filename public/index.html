@@ -7,40 +7,34 @@
   <link rel="stylesheet" href="output.css">
 </head>
 
-<body class="bg-gray-200">
-  <main class="container mx-auto py-8">
-    <div class="header">
-      <h1 class="text-4xl font-bold text-center mb-6">MDN - Meme Delivery Network</h1>
-    </div>
-    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-xl mb-8">
+<body>
+  <header class="header">
+    <h1 class="text-4xl font-bold text-center m-6 text-white">MDN - Meme Delivery Network</h1>
+  </header>
+  <main class="container mx-auto py-8 mb-auto">
+    <div class="max-w-lg mx-auto bg-white backdrop-filter backdrop-blur-md bg-opacity-25 p-5 rounded-lg shadow-xl mb-8">
       <div class="content">
         <h2 class="text-xl font-bold mb-2">What is MDN?</h2>
-        <p>MDN is a meme delivery network. It is a network of servers that deliver memes to users based on their
+        <p class="mb-2">MDN is a meme delivery network. It is a network of servers that deliver memes to users based on
+          their
           location.
         </p>
-        <h2 class="text-xl font-bold mb-2">How does MDN work?</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni rerum voluptatum architecto assumenda
-          necessitatibus cumque fugit dolore a veritatis voluptas est, temporibus expedita excepturi doloribus
-          exercitationem fuga amet, quas quam.</p>
       </div>
       <button onclick="loadRandomImage()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
         Load a random meme
       </button>
+      <!-- how does MDN work, as a hyperlink -->
+      <a href="#TODO" class="text-blue-500 hover:text-blue-600 font-bold py-2 px-4 under">How does MDN work?</a>
     </div>
-    <!-- Two buttons, one to serve random memes and second to upload memes -->
-
     <div class="buttons">
-      <form action="/random" method="GET">
-        <button type="submit">Get Random Meme</button>
-      </form>
-
-      <form action="/postMeme" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" />
-        <button type="submit">Upload Meme</button>
-      </form>
-    </div>
-    <div class="footer">
-      <p>MDN - Meme Delivery Network</p>
+      <div class="max-w-lg mx-auto bg-white backdrop-filter backdrop-blur-md bg-opacity-25 p-5 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-2">Upload a Meme</h2>
+        <form action="/postMeme" method="POST" enctype="multipart/form-data">
+          <input type="file" name="image" accept="image/*" class="mb-4 border rounded-lg py-1 px-2" />
+          <button type="submit"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Upload</button>
+        </form>
+      </div>
     </div>
   </main>
   <script src="script.js"></script>
