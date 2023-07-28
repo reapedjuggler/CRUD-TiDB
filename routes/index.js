@@ -33,7 +33,6 @@ route.get("/random", async (req, res) => {
        if (meme.success == false) {
            throw new Error(meme.message);
        }
-        //res.send(meme.message)
 	  res.send("Hello")
     } catch (err) {
         console.log(err, "Error in routes");
