@@ -19,7 +19,7 @@ async function executeQuery(query, values = []) {
   try {
     // console.log(query, " here in executeQuery")
     const results = await db.query(query, values);
-    console.log(results,  " Successful")
+    // console.log(results,  " Successful")
     await db.end();
     return results;
   } catch (error) {

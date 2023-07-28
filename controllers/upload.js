@@ -11,6 +11,7 @@ const uploadFiles = async (req, res) => {
         }
         // imageName = Date.now() + "/" + req.file.originalname
         let cnt = await getDBSize();
+        cnt = Math.max(cnt, 0);
         console.log(cnt,  " cnt ");
         imageName = "image" + cnt;
         console.log(imageName, " ", imageName);

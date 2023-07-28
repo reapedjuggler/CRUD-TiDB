@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random meme from one of our servers</title>
+</head>
+
+<body>
+  <h1>Random meme from one of our servers</h1>
+  <div id="meme"></div>
+  <script>
+    //get random meme from server
+    fetch('/random-base64-meme')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('meme').appendChild(base64ToImage(data));
+      });
+  </script>
+  <script>
+    //convert base64 to image
+    function base64ToImage(base64) {
+      var img = document.createElement('img');
+      img.src = 'data:image/png;base64,' + base64;
+      return img;
+    }
+  </script>
+
+</body>
+
+</html>

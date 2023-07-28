@@ -23,8 +23,7 @@ const insertTableQuery = (image, imageName) => {
 
 const showTables = `
             show tables;
-        `
-const dropTableQuery = "DROP TABLE images"
+        ` 
 
 module.exports = exports = {
     // insertQuery,
@@ -32,5 +31,5 @@ module.exports = exports = {
     selectTableQuery,
     insertTableQuery,
     showTables,
-    dropTableQuery
+    // dropTableQuery
 }
